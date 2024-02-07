@@ -1,0 +1,25 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+div{
+    width: 80%;
+    border: 1px solid red;
+    margin: auto;
+}
+
+img{
+    max-width: 240px;
+    max-height: 135px;
+}
+
+table, th, td{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+a:hover{
+    color: orange;
+}

@@ -1,0 +1,40 @@
+:root{
+    font-size: 62.5%;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.h1-main{
+    padding: 2rem 0 0 55rem;
+}
+
+.fav-content{
+    display: flex;
+    justify-content: space-between;
+    padding: 7rem;
+}
+
+.photo{
+    width: 48rem;
+    height: 25.4rem;
+}
+
+h1{
+    color: blue;
+}
+
+h2{
+    color: grey;
+}
+
+li{
+    color: azure;
+}
