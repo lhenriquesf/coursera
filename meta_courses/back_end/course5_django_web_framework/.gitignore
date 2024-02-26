@@ -4,6 +4,7 @@
 **/*.txt
 **/*.csv
 **/Dockerfile
+DOCKER_VIDEO
 
 /djangoapp/static/
 /djangoapp/media/
