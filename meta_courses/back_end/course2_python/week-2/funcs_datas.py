@@ -1,5 +1,3 @@
-import numpy as np
-
 employee_dict = {
     12345: {
         "id": "12345",
@@ -17,5 +15,5 @@ def get_employee_from_dict(id):
     return employee_dict[id]['id']
 
 
-print(get_employee_from_dict(12458));
+print(get_employee_from_dict(12458))
 

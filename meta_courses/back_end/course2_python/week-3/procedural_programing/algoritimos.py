@@ -37,4 +37,4 @@ def teste():
     for x in range(10):
         print(x)
 
-print(fibonacci(-17))
+print(fibonacci(1))
