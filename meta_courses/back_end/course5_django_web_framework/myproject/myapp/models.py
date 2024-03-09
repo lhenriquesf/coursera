@@ -2,6 +2,15 @@ from django.db import models
 
 # Create your models here.
 
+class Menu(models.Model):
+    name = models.CharField(max_length=200)
+    price = models.IntegerField()
+
+    def __str__(self):
+        return self.name
+
+
+
 class Logger(models.Model): 
     first_name = models.CharField(max_length=255) 
     last_name = models.CharField(max_length=255)
@@ -27,16 +36,6 @@ class Employees(models.Model):
     def __str__(self) -> str:
         return self.first_name
 
-
-
-class Menu(models.Model):
-    name_menu = models.CharField(max_length=20)
-    cuisine = models.CharField(max_length=20)
-    price = models.IntegerField()
-
-    def __str__(self):
-        return f'Comida: {self.name_menu}, Cozinha {self.cuisine} Preço: {self.price}\n'
-    
 
 
 class DrinksCategory(models.Model):
