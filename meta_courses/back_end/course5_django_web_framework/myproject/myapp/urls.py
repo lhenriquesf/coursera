@@ -1,11 +1,12 @@
 from django.urls import path
-from . import views
+from .views import ShowFormView, BookingFormView, IndexView, AboutView, MenuView, HomeView, MenuByIdView
 
 urlpatterns = [
-    path('',views.show_form_view, name='show_form_view'),
-    path('booking/',views.booking_form,name='booking_form'),
-    path('index/<str:name>', views.index, name='index'),
-    path('about/',views.about,name='about'),
-    path('menu/',views.menu),
-    path('menu_card/',views.menu_by_id),
+    path('show_form/', ShowFormView.as_view(), name='show_form_view'),
+    path('booking/', BookingFormView.as_view(), name='booking'),
+    path('index/<str:name>/', IndexView.as_view(), name='index'),
+    path('about/', AboutView.as_view(), name='about'),
+    path('menu/', MenuView.as_view(), name='menu'),
+    path('', HomeView.as_view(), name='home'),
+    path('menu_card/', MenuByIdView.as_view(), name='menu_by_id'),
 ]

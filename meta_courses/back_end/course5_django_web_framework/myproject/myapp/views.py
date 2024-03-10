@@ -1,52 +1,81 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .forms import LogForm
-from .forms import BookingForm
+from django.views import View
+from .forms import LogForm, BookingForm
 from .models import Menu
 
 # Create your views here.
 
-def show_form_view(request):
-    form = LogForm()
-    if request.method == 'POST':
+class ShowFormView(View):
+    template_name = 'form.html'
+
+    def get(self, request):
+        form = LogForm()
+        context = {'form': form}
+        return render(request, self.template_name, context)
+
+
+    def post(self, request):
         form = LogForm(request.POST)
         if form.is_valid():
             form.save()
-    context = {'form':form}
-    return render(request, 'form.html',context)
+        context = {'form': form}
+        return render(request, self.template_name, context)
+    
 
 
-def booking_form(request):
-    form = BookingForm()
-    if request.method == 'POST':
+class BookingFormView(View):
+    template_name = 'booking.html'
+
+    def get(self, request):
+        form = BookingForm()
+        context = {'form': form}
+        return render(request, self.template_name, context)
+
+
+    def post(self, request):
         form = BookingForm(request.POST)
         if form.is_valid():
             form.save()
-    context = {'form':form}
-    template_name = 'booking.html'
-    return render(request, template_name, context)
+        context = {'form': form}
+        return render(request, self.template_name, context)
 
 
-def index(request,name):
-    return HttpResponse('<h1>Hello {}<h1/>'.format(name))
+
+class HomeView(View):
+    template_name = 'home.html'
+
+    def get(self, request):
+        return render(request, self.template_name)
 
 
-def about(request):
-    content = {'about':'Little Lemon is a family-owned Mediterranean restaurant, focused on traditional recipes served with a modern twist. The chefs draw inspiration from Italian, Greek, and Turkish culture and have a menu of 12–15 items that they rotate seasonally. The restaurant has a rustic and relaxed atmosphere with moderate prices, making it a popular place for a meal any time of the day.'}
-    return render(request, 'about.html', content)
+
+class AboutView(View):
+    template_name = 'about.html'
+
+    def get(self, request):
+        return render(request, self.template_name)
 
 
-def menu(request):
-    newmenu={'mains':[
-        {'name':'falafel','price':'12'},
-        {'name':'shawarma','price':'15'},
-        {'name':'gyro','price':'10'},
-        {'name':'hummus','price':'5'},
-    ]}
-    return render(request,'menu.html',newmenu)
+
+class MenuView(View):
+    template_name = 'menu.html'
+
+    def get(self, request):
+        return render(request, self.template_name)
 
 
-def menu_by_id(request):
-    newmenu = Menu.objects.all()
-    newmenu_dict = {'menu':newmenu}
-    return render(request,'menu_card.html',newmenu_dict)
+
+class MenuByIdView(View):
+    template_name = 'menu_card.html'
+
+    def get(self, request):
+        newmenu = Menu.objects.all()
+        newmenu_dict = {'menu': newmenu}
+        return render(request, self.template_name, newmenu_dict)
+
+
+
+class IndexView(View):
+    def get(self, request, name):
+        return HttpResponse('<h1>Hello {}</h1>'.format(name))
