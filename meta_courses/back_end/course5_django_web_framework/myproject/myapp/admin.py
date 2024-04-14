@@ -1,10 +1,5 @@
 from django.contrib import admin
-from .models import Menu
-from .models import Drinks
-from .models import DrinksCategory
-from .models import Logger
-from .models import Booking
-from .models import Employees
+from .models import Menu, Drinks, DrinksCategory, Logger, Booking, Employees
 
 # Register your models here.
 admin.site.register(DrinksCategory)

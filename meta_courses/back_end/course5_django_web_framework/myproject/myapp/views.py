@@ -73,9 +73,3 @@ class MenuByIdView(View):
         newmenu = Menu.objects.all()
         newmenu_dict = {'menu': newmenu}
         return render(request, self.template_name, newmenu_dict)
-
-
-
-class IndexView(View):
-    def get(self, request, name):
-        return HttpResponse('<h1>Hello {}</h1>'.format(name))
